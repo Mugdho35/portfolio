@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0a0b12" />
+    <meta
+      name="description"
+      content="The personal portfolio of Jonaid Al Habib Mugdho: coding, startups, ideas, and interests."
+    />
+    <title>Jonaid Al Habib Mugdho — Personal Portfolio</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap");
+      :root {
+        --bg: #090b12;
+        --panel: #111520;
+        --panel2: #151b28;
+        --text: #f2f3f7;
+        --muted: #a4adbf;
+        --line: rgba(255, 255, 255, 0.11);
+        --lime: #c9ff5a;
+        --blue: #83b9ff;
+        --pink: #ff9fc9;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(ellipse at 85% 0%, rgba(74, 102, 174, 0.18), transparent 36%),
+          radial-gradient(ellipse at 0% 45%, rgba(201, 255, 90, 0.06), transparent 30%),
+          var(--bg);
+        color: var(--text);
+        font-family: Manrope, system-ui, sans-serif;
+        line-height: 1.65;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid var(--lime);
+        outline-offset: 4px;
+      }
+      .wrap {
+        width: min(1120px, calc(100% - 40px));
+        margin: auto;
+      }
+      nav {
+        height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+      }
+      .brand {
+        font-weight: 800;
+        letter-spacing: -0.04em;
+      }
+      .brand span {
+        color: var(--lime);
+      }
+      .navlinks {
+        display: flex;
+        gap: 25px;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+      .navlinks a:hover,
+      .social a:hover {
+        color: var(--lime);
+      }
+      .mono {
+        font-family: "DM Mono", monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 0.72rem;
+        color: var(--lime);
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.12fr 0.88fr;
+        gap: 70px;
+        align-items: center;
+        padding: 88px 0 92px;
+        min-height: 620px;
+      }
+      .hero h1 {
+        font-size: clamp(3rem, 7vw, 6.4rem);
+        letter-spacing: -0.085em;
+        line-height: 0.98;
+        margin: 20px 0 25px;
+        max-width: 720px;
+      }
+      .hero h1 em {
+        font-style: normal;
+        color: var(--lime);
+      }
+      .lead {
+        font-size: 1.08rem;
+        color: var(--muted);
+        max-width: 590px;
+      }
+      .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+      }
+      .btn {
+        padding: 12px 17px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 0.88rem;
+        transition: 0.2s;
+      }
+      .btn.primary {
+        background: var(--lime);
+        color: #12150a;
+        border-color: var(--lime);
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+      .hero-art {
+        position: relative;
+        max-width: 390px;
+        justify-self: end;
+        width: 100%;
+      }
+      .portrait-frame {
+        padding: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 28px;
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.12),
+          rgba(255, 255, 255, 0.02)
+        );
+        transform: rotate(2deg);
+      }
+      .portrait-frame img {
+        width: 100%;
+        height: 470px;
+        object-fit: cover;
+        object-position: center 20%;
+        border-radius: 20px;
+        display: block;
+        filter: saturate(0.82);
+      }
+      .float-card {
+        position: absolute;
+        bottom: 26px;
+        left: -42px;
+        background: #151a26;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 14px 17px;
+        box-shadow: 0 20px 60px #0008;
+      }
+      .float-card strong {
+        display: block;
+        font-size: 0.9rem;
+      }
+      .float-card small {
+        color: var(--muted);
+      }
+      .spark {
+        position: absolute;
+        right: -16px;
+        top: -22px;
+        color: var(--lime);
+        font-size: 2.5rem;
+      }
+      section {
+        padding: 76px 0;
+        border-top: 1px solid var(--line);
+      }
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 25px;
+        margin-bottom: 30px;
+      }
+      .section-head h2 {
+        font-size: clamp(2rem, 4vw, 3.3rem);
+        letter-spacing: -0.07em;
+        line-height: 1.05;
+        margin: 8px 0;
+      }
+      .section-head p {
+        max-width: 420px;
+        color: var(--muted);
+        margin: 0;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+      }
+      .card {
+        border: 1px solid var(--line);
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.045),
+          rgba(255, 255, 255, 0.015)
+        );
+        border-radius: 18px;
+        padding: 24px;
+        min-height: 190px;
+      }
+      .card .icon {
+        font-size: 1.5rem;
+      }
+      .card h3 {
+        margin: 17px 0 8px;
+        font-size: 1.08rem;
+      }
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+      .chips {
+        display: flex;
+        gap: 9px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+      .chip {
+        border: 1px solid var(--line);
+        padding: 7px 11px;
+        border-radius: 99px;
+        color: #d4d9e5;
+        font-size: 0.8rem;
+      }
+      .about {
+        display: grid;
+        grid-template-columns: 0.75fr 1.25fr;
+        gap: 45px;
+        align-items: center;
+      }
+      .about-art {
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: var(--panel);
+      }
+      .about-art img {
+        display: block;
+        width: 100%;
+        height: 330px;
+        object-fit: cover;
+      }
+      .about-copy h2 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        letter-spacing: -0.07em;
+        line-height: 1.08;
+        margin: 10px 0 18px;
+      }
+      .about-copy p {
+        color: var(--muted);
+      }
+      .social-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+      .social {
+        padding: 17px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.025);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        font-weight: 700;
+      }
+      .social span {
+        color: var(--lime);
+        font-size: 1.05rem;
+      }
+      .social:hover {
+        border-color: rgba(201, 255, 90, 0.55);
+        transform: translateY(-2px);
+      }
+      .contact {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 25px;
+        padding: 30px;
+        border-radius: 22px;
+        background: linear-gradient(
+          115deg,
+          rgba(201, 255, 90, 0.12),
+          rgba(131, 185, 255, 0.08)
+        );
+        border: 1px solid var(--line);
+      }
+      .contact h2 {
+        margin: 6px 0;
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        letter-spacing: -0.07em;
+      }
+      .contact p {
+        margin: 0;
+        color: var(--muted);
+      }
+      footer {
+        padding: 30px 0;
+        color: var(--muted);
+        font-size: 0.8rem;
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+      }
+      @media (max-width: 800px) {
+        .navlinks {
+          gap: 13px;
+          font-size: 0.78rem;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 42px;
+          padding: 62px 0;
+        }
+        .hero-art {
+          justify-self: center;
+          max-width: 340px;
+        }
+        .portrait-frame img {
+          height: 420px;
+        }
+        .float-card {
+          left: -12px;
+        }
+        .grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .about {
+          grid-template-columns: 1fr;
+        }
+        .about-art {
+          max-width: 420px;
+        }
+        .social-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .section-head {
+          align-items: start;
+          flex-direction: column;
+        }
+      }
+      @media (max-width: 500px) {
+        .wrap {
+          width: min(100% - 28px, 1120px);
+        }
+        nav {
+          height: auto;
+          padding: 18px 0;
+          align-items: flex-start;
+        }
+        .navlinks {
+          max-width: 220px;
+          justify-content: flex-end;
+          flex-wrap: wrap;
+        }
+        .hero h1 {
+          font-size: 3.35rem;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .social-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .contact {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        footer {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="#home">MUGDHO<span>.</span></a>
+        <div class="navlinks">
+          <a href="#about">About</a><a href="#interests">Interests</a
+          ><a href="#socials">Socials</a>
+        </div>
+      </nav>
+
+      <main>
+        <header class="hero" id="home">
+          <div>
+            <div class="mono">Personal portfolio / 2026</div>
+            <h1>Jonaid Al Habib <em>Mugdho.</em></h1>
+            <p class="lead">
+              Curious about code, startups, technology, and the ideas shaping the world.
+              Building, learning, and documenting the journey one project at a time.
+            </p>
+            <div class="actions">
+              <a class="btn primary" href="#about">A little about me ↘</a>
+              <a class="btn" href="#socials">Find me online ↗</a>
+            </div>
+          </div>
+          <div class="hero-art">
+            <div class="spark">✳</div>
+            <div class="portrait-frame">
+              <img
+                src="assets/mugdho-profile.jpg"
+                alt="Portrait of Jonaid Al Habib Mugdho"
+              />
+            </div>
+            <div class="float-card">
+              <strong>Curiosity → Creation</strong><small>Code • Ideas • Community</small>
+            </div>
+          </div>
+        </header>
+
+        <section id="about">
+          <div class="about">
+            <div class="about-art">
+              <img src="assets/mugdho-portrait-art.jpg" alt="Stylized portrait" />
+            </div>
+            <div class="about-copy">
+              <div class="mono">01 / About</div>
+              <h2>Interested in how things work, and what they could become.</h2>
+              <p>
+                I’m Jonaid Al Habib Mugdho. I’m interested in coding, startups, gaming,
+                and exploring different perspectives. I enjoy learning how technology is
+                built, how ideas become products, and how people think about the world.
+              </p>
+              <p>
+                This site is my little corner of the internet: a home for my interests,
+                projects, writing, and the places where I share what I’m learning.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="interests">
+          <div class="section-head">
+            <div>
+              <div class="mono">02 / What I’m into</div>
+              <h2>Interests & explorations</h2>
+            </div>
+            <p>
+              A few subjects I enjoy learning about, making things with, and discussing.
+            </p>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <div class="icon">⌘</div>
+              <h3>Coding & building</h3>
+              <p>
+                Programming, experimenting with tools, and turning ideas into useful
+                projects.
+              </p>
+              <div class="chips">
+                <span class="chip">Development</span><span class="chip">Projects</span>
+              </div>
+            </article>
+            <article class="card">
+              <div class="icon">↗</div>
+              <h3>Startups & ideas</h3>
+              <p>
+                Product thinking, entrepreneurship, business models, and how new ideas
+                grow.
+              </p>
+              <div class="chips">
+                <span class="chip">Startups</span><span class="chip">Innovation</span>
+              </div>
+            </article>
+            <article class="card">
+              <div class="icon">◉</div>
+              <h3>Gaming</h3>
+              <p>Games, gameplay, gaming culture, and sharing entertaining moments.</p>
+              <div class="chips">
+                <span class="chip">Gaming</span><span class="chip">YouTube</span>
+              </div>
+            </article>
+            <article class="card">
+              <div class="icon">✳</div>
+              <h3>Ideas & debate</h3>
+              <p>
+                Exploring philosophy, society, current affairs, and different points of
+                view.
+              </p>
+              <div class="chips">
+                <span class="chip">Discussion</span
+                ><span class="chip">Critical thinking</span>
+              </div>
+            </article>
+            <article class="card">
+              <div class="icon">⌁</div>
+              <h3>Technology</h3>
+              <p>
+                Following AI, software, and the tools changing how people create and work.
+              </p>
+              <div class="chips">
+                <span class="chip">AI</span><span class="chip">Tech</span>
+              </div>
+            </article>
+            <article class="card">
+              <div class="icon">◎</div>
+              <h3>Creative living</h3>
+              <p>
+                Photography, design, places, and the small details that make life
+                interesting.
+              </p>
+              <div class="chips">
+                <span class="chip">Design</span><span class="chip">Lifestyle</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="socials">
+          <div class="section-head">
+            <div>
+              <div class="mono">03 / Elsewhere on the internet</div>
+              <h2>Find me online</h2>
+            </div>
+            <p>Follow the different sides of my journey.</p>
+          </div>
+          <div class="social-grid">
+            <a
+              class="social"
+              href="https://www.instagram.com/mugdho.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Instagram <span>↗</span></a
+            >
+            <a
+              class="social"
+              href="https://www.instagram.com/mugdho.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Coding Instagram <span>↗</span></a
+            >
+            <a
+              class="social"
+              href="https://x.com/Dhacker_chomu"
+              target="_blank"
+              rel="noopener noreferrer"
+              >X / Twitter <span>↗</span></a
+            >
+            <a
+              class="social"
+              href="https://www.linkedin.com/in/jonaid-al-habib-mugdho-mugdho-01b57a414/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >LinkedIn <span>↗</span></a
+            >
+            <a
+              class="social"
+              href="https://www.facebook.com/share/1A7JMh7NCd/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Facebook <span>↗</span></a
+            >
+            <a
+              class="social"
+              href="https://www.supportkori.com/mugdhoio"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Support my work <span>↗</span></a
+            >
+            <a
+              class="social"
+              href="https://github.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub <span>↗</span></a
+            >
+            <a
+              class="social"
+              href="https://www.quora.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Quora <span>↗</span></a
+            >
+            <a
+              class="social"
+              href="https://stackoverflow.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Stack Overflow <span>↗</span></a
+            >
+            <a
+              class="social"
+              href="https://www.youtube.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >YouTube Gaming <span>↗</span></a
+            >
+            <a
+              class="social"
+              href="https://www.youtube.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >YouTube Main <span>↗</span></a
+            >
+            <a
+              class="social"
+              href="https://discord.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Discord <span>↗</span></a
+            >
+            <a
+              class="social"
+              href="https://www.reddit.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Reddit <span>↗</span></a
+            >
+          </div>
+        </section>
+
+        <section>
+          <div class="contact">
+            <div>
+              <div class="mono">04 / Stay connected</div>
+              <h2>Good ideas start with curiosity.</h2>
+              <p>
+                Learning in public, building step by step, and staying open to new
+                perspectives.
+              </p>
+            </div>
+            <a
+              class="btn primary"
+              href="https://www.instagram.com/mugdho.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Connect ↗</a
+            >
+          </div>
+        </section>
+      </main>
+      <footer>
+        <span>© <span id="year">2026</span> Jonaid Al Habib Mugdho</span
+        ><span>Made with curiosity & a little bit of code.</span>
+      </footer>
+    </div>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
